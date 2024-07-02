@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My profile</title>
+</head>
+
+<body>
+    <!-- start profile -->
+    <section class="container">
+        <div class="profile">
+            <h2 class="header">My Profile</h2>
+            <hr>
+            <div class="profile-name">
+                <div class="slackDisplayImage" style="width: 200px;">
+                    <img data-testid="slackProfilePicture" src="image/Slackimage.jpg" alt="">
+                </div>
+                <div class="infoSection">
+                    <h1>Ogunya Fortunate</h1>
+                    <h2 data-testid="slackEmail">Ogunyafort@gmail.com</h2>
+                    <p data-testid="slackDisplayName">Slack id<span>:</span>FortStar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- End profile -->
+
+    <!-- start Day and Time -->
+
+    <section class="container">
+        <div class="dayTime">
+            <h2 class="header">Today's Date</h2>
+            <hr>
+            <div class="currentTime">
+                <h3 data-testid="currentTimeUTC"><span id="hour"></span>: <span id="mins"></span> : <span
+                        id="secs"></span></h3>
+                <p>Current Time</p>
+                <p id="demo"></p>
+            </div>
+            <div class="currentDay">
+                <h3 data-testid="currentDay"><span id="day"></span></h3>
+                <p>Current Day</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- end Day and Time -->
+
+    <!-- start Goal -->
+    <section class="container">
+        <div class="goals">
+            <h2 class="header">My Goals</h2>
+            <hr>
+            <div class="goalSection">
+                <p>Year 1:</p>
+                <ul>
+                    <li>Start learning a popular frontend framework/library such as React, Angular, or Vue.js.</li>
+                    <li>Build simple projects to apply learned concepts and improve practical skills.</li>
+                    <li>Complete at least three personal or open-source projects, focusing on different aspects of
+                        frontend development.</li>
+                    <li>Create a portfolio website to showcase your projects and progress.</li>
+                    <li>Learn the basics of user experience (UX) and user interface (UI) design.</li>
+                    <li>Implement these principles in your projects to improve usability and aesthetics.</li>
+                    <li>Get familiar with basic testing techniques and tools for frontend applications (e.g., Jest,
+                        Mocha).</li>
+                    <li>Learn effective debugging practices using browser developer tools.</li>
+                </ul>
+                <p>Year 2:</p>
+                <ul>
+                    <li>Gain advanced knowledge in your chosen framework/library.</li>
+                    <li> Build more complex and dynamic applications, integrating APIs and state management libraries
+                        (e.g., Redux for React).</li>
+                    <li> Work on team projects, either through work, internships, or open-source contributions.</li>
+                    <li> Continue building my portfolio and showcasing your skills.</li>
+                    <li> Understand the basics of deploying frontend applications to various environments (e.g., using
+                        platforms like Netlify, Vercel, or AWS).</li>
+                    <li>Learn about continuous integration and continuous deployment (CI/CD) pipelines.</li>
+                    <li>Network with other developers, both online and in-person, to build professional relationships
+                        and gain insights from the industry.</li>
+
+                    <li>Improve communication skills to effectively collaborate with team members, designers, and
+                        backend developers.</li>
+                    <li> Develop problem-solving and critical thinking abilities to tackle complex issues and
+                        challenges.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- end Goal -->
+
+
+    <!-- start link -->
+    <section class="container">
+        <div class="links">
+            <h2 class="header">Links</h2>
+            <hr>
+            <div class="linkSection">
+                <a href="https://keyword.dog/" data-testid="keywordLink">Keyword Dog</a>
+                <a href="https://scrapeanyweb.site/" data-testid="scrapeanywebLink">Scrape any web</a>
+                <a href="http://hng.tech/learn" data-testid="hngLink">HNG Learn</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- End link -->
+
+    <script src="script.js"> </script>
+
+</body>
+
+</html>
