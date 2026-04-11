@@ -1,116 +1,325 @@
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Card</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>My profile</title>
-</head>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-<body>
-    <!-- start profile -->
-    <section class="container">
-        <div class="profile">
-            <h2 class="header">My Profile</h2>
-            <hr>
-            <div class="profile-name">
-                <div class="slackDisplayImage" style="width: 200px;">
-                    <img data-testid="slackProfilePicture" src="image/Slackimage.jpg" alt="">
-                </div>
-                <div class="infoSection">
-                    <h1>Ogunya Fortunate</h1>
-                    <h2 data-testid="slackEmail">Ogunyafort@gmail.com</h2>
-                    <p data-testid="slackDisplayName">Slack id<span>:</span>FortStar</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: #f3f4f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 0 15px;
+      }
 
-    <!-- End profile -->
+      .card {
+        width: 100%;
+        max-width: 520px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
 
-    <!-- start Day and Time -->
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    <section class="container">
-        <div class="dayTime">
-            <h2 class="header">Today's Date</h2>
-            <hr>
-            <div class="currentTime">
-                <h3 data-testid="currentTimeUTC"><span id="hour"></span>: <span id="mins"></span> : <span
-                        id="secs"></span></h3>
-                <p>Current Time</p>
-                <p id="demo"></p>
-            </div>
-            <div class="currentDay">
-                <h3 data-testid="currentDay"><span id="day"></span></h3>
-                <p>Current Day</p>
-            </div>
-        </div>
-    </section>
+      .priority {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #ffe9e3;
+        color: #ff5a1f;
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
 
-    <!-- end Day and Time -->
+      .date {
+        font-size: 13px;
+        color: #777;
+      }
 
-    <!-- start Goal -->
-    <section class="container">
-        <div class="goals">
-            <h2 class="header">My Goals</h2>
-            <hr>
-            <div class="goalSection">
-                <p>Year 1:</p>
-                <ul>
-                    <li>Start learning a popular frontend framework/library such as React, Angular, or Vue.js.</li>
-                    <li>Build simple projects to apply learned concepts and improve practical skills.</li>
-                    <li>Complete at least three personal or open-source projects, focusing on different aspects of
-                        frontend development.</li>
-                    <li>Create a portfolio website to showcase your projects and progress.</li>
-                    <li>Learn the basics of user experience (UX) and user interface (UI) design.</li>
-                    <li>Implement these principles in your projects to improve usability and aesthetics.</li>
-                    <li>Get familiar with basic testing techniques and tools for frontend applications (e.g., Jest,
-                        Mocha).</li>
-                    <li>Learn effective debugging practices using browser developer tools.</li>
-                </ul>
-                <p>Year 2:</p>
-                <ul>
-                    <li>Gain advanced knowledge in your chosen framework/library.</li>
-                    <li> Build more complex and dynamic applications, integrating APIs and state management libraries
-                        (e.g., Redux for React).</li>
-                    <li> Work on team projects, either through work, internships, or open-source contributions.</li>
-                    <li> Continue building my portfolio and showcasing your skills.</li>
-                    <li> Understand the basics of deploying frontend applications to various environments (e.g., using
-                        platforms like Netlify, Vercel, or AWS).</li>
-                    <li>Learn about continuous integration and continuous deployment (CI/CD) pipelines.</li>
-                    <li>Network with other developers, both online and in-person, to build professional relationships
-                        and gain insights from the industry.</li>
+      h2 {
+        margin: 15px 0 5px;
+        font-size: 18px;
+      }
 
-                    <li>Improve communication skills to effectively collaborate with team members, designers, and
-                        backend developers.</li>
-                    <li> Develop problem-solving and critical thinking abilities to tackle complex issues and
-                        challenges.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+      .completed {
+        text-decoration: line-through;
+        color: #aaa;
+      }
 
-    <!-- end Goal -->
+      .desc {
+        font-size: 14px;
+        color: #666;
+      }
 
+      .tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
 
-    <!-- start link -->
-    <section class="container">
-        <div class="links">
-            <h2 class="header">Links</h2>
-            <hr>
-            <div class="linkSection">
-                <a href="https://keyword.dog/" data-testid="keywordLink">Keyword Dog</a>
-                <a href="https://scrapeanyweb.site/" data-testid="scrapeanywebLink">Scrape any web</a>
-                <a href="http://hng.tech/learn" data-testid="hngLink">HNG Learn</a>
-            </div>
-        </div>
-    </section>
+      .tag {
+        border: 1px solid #ddd;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        color: #555;
+      }
 
-    
-    <!-- End link -->
+      .time {
+        font-size: 12px;
+        color: #888;
+        margin-top: 10px;
+      }
 
-    <script src="script.js"> </script>
+      .divider {
+        border-top: 1px dashed #eee;
+        margin: 16px 0;
+      }
 
-</body>
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
+      .status {
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: #eef2ff;
+        color: #4f46e5;
+      }
+
+      .status.done {
+        background: #e6f9ec;
+        color: #16a34a;
+      }
+
+      /* Custom Checkbox */
+      .checkbox {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .checkbox input {
+        display: none;
+      }
+
+      .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        display: inline-block;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      .checkbox input:checked + .custom-checkbox {
+        background: #4f46e5;
+        border-color: #4f46e5;
+      }
+
+      .custom-checkbox::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: translate(-50%, -60%) rotate(45deg);
+        opacity: 0;
+      }
+
+      .checkbox input:checked + .custom-checkbox::after {
+        opacity: 1;
+      }
+
+      .checkbox:hover .custom-checkbox {
+        border-color: #4f46e5;
+      }
+
+      .checkbox input:focus + .custom-checkbox {
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+      }
+
+      .actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 20px;
+      }
+
+      button {
+        padding: 6px 10px;
+        border-radius: 6px;
+        width: 100%;
+        padding: 8px 16px;
+        border: 1px solid #ddd;
+        background: #f9fafb;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      button:focus {
+        outline: 2px solid #333;
+      }
+
+      .delete {
+        color: white;
+        background-color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    <article class="card" data-testid="test-todo-card">
+      <!-- Top -->
+      <div class="top">
+        <span class="priority" data-testid="test-todo-priority">🚩 High</span>
+
+        <label class="checkbox">
+          <input
+            type="checkbox"
+            data-testid="test-todo-complete-toggle"
+            id="checkbox"
+          />
+          <span class="custom-checkbox"></span>
+          <span>Done</span>
+        </label>
+      </div>
+
+      <!-- Title -->
+      <h2 data-testid="test-todo-title" id="title">
+        Create comprehensive wireframe
+      </h2>
+
+      <!-- Description -->
+      <p class="desc" data-testid="test-todo-description">
+        Discuss with UX Designer to develop the concept into a clear and
+        effective wireframe.
+      </p>
+
+      <!-- Tags -->
+      <div class="tags" data-testid="test-todo-tags" role="list">
+        <span class="tag" data-testid="test-todo-tag-work"># Design</span>
+        <span class="tag" data-testid="test-todo-tag-urgent"># UI</span>
+        <span class="tag"># Product</span>
+      </div>
+
+      <!-- Time Remaining -->
+      <div class="time">
+        <time
+          data-testid="test-todo-time-remaining"
+          id="timeRemaining"
+          aria-live="polite"
+        ></time>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Bottom -->
+      <div class="bottom">
+        <span class="status" data-testid="test-todo-status" id="status">
+          In Progress
+        </span>
+
+        <time class="date" data-testid="test-todo-due-date" id="dueDate"></time>
+      </div>
+
+      <!-- Buttons -->
+      <div class="actions">
+        <button data-testid="test-todo-edit-button" onclick="editTask()">
+          Edit
+        </button>
+
+        <button
+          class="delete"
+          data-testid="test-todo-delete-button"
+          onclick="deleteTask()"
+        >
+          Delete
+        </button>
+      </div>
+    </article>
+
+    <script>
+      const dueDate = new Date(Date.now() + 1000 * 60 * 60 * 24 * 2);
+
+      const dueDateEl = document.getElementById("dueDate");
+      const timeEl = document.getElementById("timeRemaining");
+      const checkbox = document.getElementById("checkbox");
+      const title = document.getElementById("title");
+      const status = document.getElementById("status");
+
+      function formatDate(date) {
+        return "Due " + date.toDateString();
+      }
+
+      function getRemaining() {
+        const now = new Date();
+        const diff = dueDate - now;
+
+        const minutes = Math.floor(diff / (1000 * 60));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (diff <= 0) return "Due now!";
+        if (days > 1) return `Due in ${days} days`;
+        if (days === 1) return "Due tomorrow";
+        if (hours > 1) return `Due in ${hours} hours`;
+        return `Due in ${minutes} minutes`;
+      }
+
+      function updateTime() {
+        timeEl.textContent = getRemaining();
+      }
+
+      dueDateEl.textContent = formatDate(dueDate);
+      updateTime();
+      setInterval(updateTime, 60000);
+
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          title.classList.add("completed");
+          status.textContent = "Done";
+          status.classList.add("done");
+        } else {
+          title.classList.remove("completed");
+          status.textContent = "In Progress";
+          status.classList.remove("done");
+        }
+      });
+
+      function editTask() {
+        console.log("edit clicked");
+      }
+
+      function deleteTask() {
+        alert("Delete clicked");
+      }
+    </script>
+  </body>
 </html>
